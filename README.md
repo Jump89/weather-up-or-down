@@ -37,13 +37,18 @@ SO THAT I can plan a trip accordingly
 
 ## Resources 
 
- *
+ * One Call Weather Api 
+ * Current Weather Data Api 
 
 ## Front End
 
 * HTML
 * CSS
-* 
+* Javascript
+* [Bootstrap 5.0](https://getbootstrap.com/)
+* [Moment.js](https://momentjs.com/)
+* [Font Awesome](https://fontawesome.com/) 
+
 
 ## Backend
 
@@ -59,5 +64,5 @@ SO THAT I can plan a trip accordingly
 
 ## Landing Page Screen Shoot
 
-* ![](assets/image/Landingpage.png)
-* ![](assets/image/Textarea.png)
+* ![]()
+* ![]()
