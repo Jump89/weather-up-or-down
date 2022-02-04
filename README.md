@@ -15,6 +15,8 @@ SO THAT I can plan a trip accordingly
 
 ## Features
 
+* Search City Location 
+* 5 Day forecast
 * 
 
 ## Installation
@@ -29,7 +31,6 @@ SO THAT I can plan a trip accordingly
 
 * 
 
-* 
 
 ## Credits 
 
@@ -56,7 +57,7 @@ SO THAT I can plan a trip accordingly
 
 ## Repo
 
-* ()
+* (https://github.com/Jump89/weather-up-or-down)
 
 ## Website
 
