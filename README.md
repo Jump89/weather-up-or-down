@@ -4,7 +4,7 @@ Weather Application
 
 ## Description 
 
-* 
+* Responsive Weather Application , Users can search current weather by city, once city has been found the data rendered are as follows , Todays Date, Current Weather of city searched and a image to describe current weather, Temperature in Fahrenheit, Wind in Miles Per Hour, Humidity, and UVI.
 
 ## User Story 
 
@@ -17,19 +17,25 @@ SO THAT I can plan a trip accordingly
 
 * Search City Location 
 * 5 Day forecast
-* 
+* Temp
+* Wind Speed
+* Humidity 
+* UVI
+* Save Searched city's to local storage 
+* Clear Search History
+
 
 ## Installation
 
-* 
+* Use application via web browser ()
 
 ## Dependencies
 
-* 
+* No Dependencies for this Application
 
 ## License
 
-* 
+* No Licenses for this Application 
 
 
 ## Credits 
@@ -51,9 +57,10 @@ SO THAT I can plan a trip accordingly
 * [Font Awesome](https://fontawesome.com/) 
 
 
-## Backend
+## Api
 
-* 
+* Current Weather Data (https://openweathermap.org/current
+* Once Call Api (https://openweathermap.org/api/one-call-api)
 
 ## Repo
 

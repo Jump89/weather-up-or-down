@@ -62,8 +62,9 @@ function displayForecast(data)  {
     var divContainerEl = document.createElement('div');
     divContainerEl.className = "d-flex flex-row flex-wrap justify-content-between";
     var fiveDayForecast = document.createElement('h1');
-    fiveDayForecast.textContent = "5 Day Forecast"
-    
+    fiveDayForecast.textContent = "5 Day Forecast";
+    weatherEl.append(fiveDayForecast);
+
     for (let i = 0; i < 5; i++) {
         var image = "https://openweathermap.org/img/wn/" + data[i].weather[0].icon + "@2x.png"
         var cardEl = document.createElement('div');
@@ -81,7 +82,7 @@ function displayForecast(data)  {
 
         cardEl.append(dateEL, futureWeather, tempEL, windEL, humEL);
         divContainerEl.append(cardEl);
-
+        
     }
     weatherEl.append(divContainerEl);
 }
