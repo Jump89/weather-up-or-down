@@ -5,7 +5,7 @@ var searchBox = $('#history');
 
 
 function search(location) {
-    var apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}` //garbs dta from api call 
+    var apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}` //garbs data from api call 
     fetch(apiUrl).then(responses => {
         if(responses.ok) {
             responses.json().then(data => {
@@ -61,6 +61,7 @@ function displayAData(data) {
 
 }
 
+// function that displays 5 day forecast 
 function displayForecast(data)  {
     console.log("DAILY DATA: ", data)
     var divContainerEl = document.createElement('div');
@@ -70,13 +71,13 @@ function displayForecast(data)  {
     weatherEl.append(fiveDayForecast);
 
     for (let i = 0; i < 5; i++) {
-        var image = "https://openweathermap.org/img/wn/" + data[i].weather[0].icon + "@2x.png"
+        var image = "https://openweathermap.org/img/wn/" + data[i].weather[0].icon + "@2x.png" // display img 
         var cardEl = document.createElement('div');
-        cardEl.className = "card text-center align-items-center p-3";
+        cardEl.className = "card text-center align-items-center p-3";  // gets current date 
         var dateEL = document.createElement('h3');
         dateEL.textContent = moment().add((i + 1), 'd').format('MM/DD/YYYY');
         var futureWeather = document.createElement('h3');
-        futureWeather.innerHTML =  "<img src='" + image + "' />" + data[i].weather[0].description
+        futureWeather.innerHTML =  "<img src='" + image + "' />" + data[i].weather[0].description // gets future weather 
         var tempEL = document.createElement('h3');
         tempEL.textContent = "Temp: " + data[i].temp.day + "°F"
         var windEL = document.createElement('h3');
@@ -93,7 +94,10 @@ function displayForecast(data)  {
 
 // saving empty arry to local storage 
 function saveHistory(city) {
-    searchHistory.push(city); // pushing citys into the searchHistory array 
+    if(!(searchHistory.indexOf(city) > -1)) {
+        searchHistory.push(city); 
+    }
+   // pushing citys into the searchHistory array 
      console.log(searchHistory);
      localStorage.setItem('search', JSON.stringify(searchHistory) );
 }
@@ -102,24 +106,36 @@ function saveHistory(city) {
 function getHistory() {
     var getLocal = localStorage.getItem('search');
     getLocal = JSON.parse(getLocal); // will parse data into an array 
-
-}
+    for( x in getLocal) {  // to iterate through local storage if any 
+        searchHistory.push(getLocal[x]);
+        searchBtn(getLocal[x])
+    }
+} 
 
 // grabbing local storage items and displays
 function searchBtn(city) {
     var btnEl = document.createElement('button');
     btnEl.className = 'btn btn-success';
     btnEl.textContent = city;
-
+    btnEl.setAttribute('data-search', city);
     searchBox.append(btnEl);
 }
 
+function clearHistory() { // function to clear history on click 
+    localStorage.clear();
+    location.reload(); // page reload once clear history is pushed 
+}
 //  on click it gets location data fromm api 
 $(document).on('click', '.btn', function(event) {
     event.preventDefault(); // prevents reloading page , form auto reloads page by default 
     var city = $('#city').val().trim() // gets city input 
+    if(city === null || city === '') {  // this will check to see if input field is empty and if it is look for the data-search attribute
+        city = $(this).attr('data-search'); // changes btn for city to be rendered 
+    }
     search(city);
-    searchBtn(city);
+    if(!(searchHistory.indexOf(city) > -1)) {  // if item in array excesses then dont push
+        searchBtn(city);
+    }
 })
 
 getHistory();
