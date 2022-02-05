@@ -1,6 +1,7 @@
 var weatherEl = $('#weather-container');
 var apiKey = 'aa630346e91a6441f826ab5f7a6be4a5';
 var searchHistory = [];
+var searchBox = $('#history');
 
 
 function search(location) {
@@ -97,9 +98,28 @@ function saveHistory(city) {
      localStorage.setItem('search', JSON.stringify(searchHistory) );
 }
 
+ 
+function getHistory() {
+    var getLocal = localStorage.getItem('search');
+    getLocal = JSON.parse(getLocal); // will parse data into an array 
+
+}
+
+// grabbing local storage items and displays
+function searchBtn(city) {
+    var btnEl = document.createElement('button');
+    btnEl.className = 'btn btn-success';
+    btnEl.textContent = city;
+
+    searchBox.append(btnEl);
+}
+
 //  on click it gets location data fromm api 
 $(document).on('click', '.btn', function(event) {
     event.preventDefault(); // prevents reloading page , form auto reloads page by default 
     var city = $('#city').val().trim() // gets city input 
     search(city);
+    searchBtn(city);
 })
+
+getHistory();
