@@ -68,9 +68,9 @@ SO THAT I can plan a trip accordingly
 
 ## Website
 
-* ()
+* (https://jump89.github.io/weather-up-or-down/)
 
 ## Landing Page Screen Shoot
 
-* ![]()
-* ![]()
+* ![](assets/image/Landing.png)
+* ![](assets/image/Displayed.png)
