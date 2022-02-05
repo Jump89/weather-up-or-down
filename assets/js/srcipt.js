@@ -1,5 +1,7 @@
 var weatherEl = $('#weather-container');
 var apiKey = 'aa630346e91a6441f826ab5f7a6be4a5';
+var searchHistory = [];
+
 
 function search(location) {
     var apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}` //garbs dta from api call 
@@ -7,6 +9,7 @@ function search(location) {
         if(responses.ok) {
             responses.json().then(data => {
                 // console.log(data)
+                saveHistory(location);
                 oneCallApi(data.coord.lat, data.coord.lon) // gets longitude and latitude of the city and pass to oneCallApi function  
             })
         } else {
@@ -82,15 +85,17 @@ function displayForecast(data)  {
 
         cardEl.append(dateEL, futureWeather, tempEL, windEL, humEL);
         divContainerEl.append(cardEl);
-        
+
     }
     weatherEl.append(divContainerEl);
 }
 
-
-
-// List 5 day forecast
-
+// saving empty arry to local storage 
+function saveHistory(city) {
+    searchHistory.push(city); // pushing citys into the searchHistory array 
+     console.log(searchHistory);
+     localStorage.setItem('search', JSON.stringify(searchHistory) );
+}
 
 //  on click it gets location data fromm api 
 $(document).on('click', '.btn', function(event) {
